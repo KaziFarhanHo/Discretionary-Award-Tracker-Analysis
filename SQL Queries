@@ -73,7 +73,7 @@ LIMIT 10;
 
 
 
-/* Query (8): Which top 5 agencies have received the most amount of money? How many times have they reveived? What is the total amount they have rceived over time?*/
+/* Query (9): Which top 5 agencies have received the most amount of money? How many times have they reveived? What is the total amount they have rceived over time?*/
 SELECT 
 	Agency,
 	COUNT (Agency),
