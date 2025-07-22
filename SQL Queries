@@ -57,7 +57,7 @@ WHERE
 
 
 	
-/* Query (8): Which top 5 vendors have received the most amount of money? How many times have they reveived? What is the total amount they have rceived over time? */ 
+/* Query (8): Which top 5 vendors have received the most amount of money? How many times have they received? What is the total amount they have rceived over time? */ 
 SELECT 
 	Vendor_Name,
 	COUNT (Vendor_Name) AS Number_of_Awards,
@@ -70,11 +70,27 @@ GROUP BY
 	Vendor_Name 
 ORDER BY 
 	Total_Reward DESC
-LIMIT 10;
+LIMIT 5;
 
 
 
-/* Query (9): Which top 5 agencies have received the most amount of money? How many times have they reveived? What is the total amount they have rceived over time?*/
+/* Query (9): Which 5 vendors have received the least amount of money? How many times have they received? What is the total amount they have rceived over time? */ 
+SELECT 
+	Vendor_Name,
+	COUNT (Vendor_Name) AS Number_of_Awards,
+	SUM (Amount) AS Total_Reward 
+FROM 
+	DiscretionaryAward
+WHERE 
+	Status_Summary IS 'Cleared - Contact Contracting Agency'
+GROUP BY 
+	Vendor_Name 
+ORDER BY 
+	Total_Reward
+LIMIT 5;
+
+
+/* Query (10): Which top 5 agencies have received the most amount of money? How many times have they reveived? What is the total amount they have rceived over time?*/
 SELECT 
 	Agency,
 	COUNT (Agency),
