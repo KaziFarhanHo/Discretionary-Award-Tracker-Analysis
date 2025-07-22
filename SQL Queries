@@ -14,7 +14,7 @@ LIMIT 5;
 
 	
 	
-/* Query (3): How many different agencies are there and what are they? */ 
+/* Query (3): How many different agencies are there, and what are they? */ 
 SELECT 
 	DISTINCT (Agency)
 FROM 
@@ -83,7 +83,7 @@ LIMIT 5;
 
 
 
-/* Query (10): Which 5 vendors have received the least amount of money? How many times have they received? What is the total amount they have rceived over time? */ 
+/* Query (10): Which 5 vendors have received the least amount of money? How many times have they received? What is the total amount they have received over time? */ 
 SELECT 
 	Vendor_Name,
 	COUNT (Vendor_Name) AS Number_of_Awards,
@@ -99,7 +99,7 @@ ORDER BY
 LIMIT 5;
 
 
-/* Query (11): Which top 5 agencies have received the most amount of money? How many times have they received? What is the total amount they have rceived over time?*/
+/* Query (11): Which top 5 agencies have received the most amount of money? How many times have they received? What is the total amount they have received over time?*/
 SELECT 
 	Agency,
 	COUNT (Agency),
@@ -116,7 +116,7 @@ LIMIT 5;
 
 
 
-/* Query (12): What are the Top 5 sources/categories under which the most amount of reward was given? How many times have they reveived? What is the total amount they have rceived over time?*/
+/* Query (12): What are the Top 5 sources/categories under which the most amount of reward was given? How many times have they received? What is the total amount they have received over time?*/
 SELECT 
 	Source,
 	SUM (Amount) AS Total_Reward 
