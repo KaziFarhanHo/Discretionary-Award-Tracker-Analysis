@@ -1,11 +1,20 @@
-/* Query (1): Lets get an idea about the dataset by looking at the first few rows. */ 
+/* Query (1): How big is the dataset? */ 
+SELECT 
+	COUNT (*)
+FROM
+	DiscretionaryAward;
+
+
+
+/* Query (2): Let's get an idea about the dataset by looking at the first few rows. */ 
 SELECT * 
-FROM DiscretionaryAward
+FROM 
+	DiscretionaryAward
 LIMIT 5;
 
 	
 	
-/* Query (2): How many different agencies are there what are they? */ 
+/* Query (3): How many different agencies are there and what are they? */ 
 SELECT 
 	DISTINCT (Agency)
 FROM 
@@ -13,7 +22,7 @@ FROM
 
 
 	
-/* Query (3): How many different vendors have recived the award? */
+/* Query (4): How many different vendors have received the award? */
 SELECT 
 	COUNT (DISTINCT (Vendor_Name)) AS Number_of_Vendors
 FROM 
@@ -21,7 +30,7 @@ FROM
 	
 
 
-/* Query (4): What are different sources/category under which the awards were ganted? */
+/* Query (5): What are different sources/categories under which the awards were granted? */
 SELECT 
 	DISTINCT (Source)
 FROM 
@@ -29,7 +38,7 @@ FROM
 	
 
 	
-/* Query (5): Total amount of discretionary award requested by vendors. */ 
+/* Query (6): Total amount of discretionary award requested by vendors. */ 
 SELECT 
 	SUM(Amount)  
 FROM 
@@ -37,7 +46,7 @@ FROM
 
 	
 
-/* Query (6): Amount of discretionary award cleared. */ 
+/* Query (7): Amount of discretionary award cleared. */ 
 SELECT 
 	SUM(Amount) 
 FROM 
@@ -47,7 +56,7 @@ WHERE
 	
 	
 
-/* Query (7): Amount of discretionary award not cleared. */
+/* Query (8): Amount of discretionary award not cleared. */
 SELECT 
 	SUM(Amount) 
 FROM 
@@ -57,7 +66,7 @@ WHERE
 
 
 	
-/* Query (8): Which top 5 vendors have received the most amount of money? How many times have they received? What is the total amount they have rceived over time? */ 
+/* Query (9): Which top 5 vendors have received the most amount of money? How many times have they received? What is the total amount they have rceived over time? */ 
 SELECT 
 	Vendor_Name,
 	COUNT (Vendor_Name) AS Number_of_Awards,
@@ -74,7 +83,7 @@ LIMIT 5;
 
 
 
-/* Query (9): Which 5 vendors have received the least amount of money? How many times have they received? What is the total amount they have rceived over time? */ 
+/* Query (10): Which 5 vendors have received the least amount of money? How many times have they received? What is the total amount they have rceived over time? */ 
 SELECT 
 	Vendor_Name,
 	COUNT (Vendor_Name) AS Number_of_Awards,
@@ -90,7 +99,7 @@ ORDER BY
 LIMIT 5;
 
 
-/* Query (10): Which top 5 agencies have received the most amount of money? How many times have they reveived? What is the total amount they have rceived over time?*/
+/* Query (11): Which top 5 agencies have received the most amount of money? How many times have they received? What is the total amount they have rceived over time?*/
 SELECT 
 	Agency,
 	COUNT (Agency),
@@ -104,3 +113,26 @@ GROUP BY
 ORDER BY 
 	Total_Reward DESC
 LIMIT 5;
+
+
+
+/* Query (12): What are the Top 5 sources/categories under which the most amount of reward was given? How many times have they reveived? What is the total amount they have rceived over time?*/
+SELECT 
+	Source,
+	SUM (Amount) AS Total_Reward 
+FROM 
+	DiscretionaryAward
+WHERE 
+	Status_Summary IS 'Cleared - Contact Contracting Agency'
+GROUP BY 
+	Source 
+ORDER BY 
+	Total_Reward DESC
+LIMIT 5;
+	
+
+
+
+
+
+
