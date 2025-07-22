@@ -55,6 +55,7 @@ FROM
 WHERE 
 	Status_Summary != 'Cleared - Contact Contracting Agency';
 
+
 	
 /* Query (8): Which top 5 vendors have received the most amount of money? How many times have they reveived? What is the total amount they have rceived over time? */ 
 SELECT 
